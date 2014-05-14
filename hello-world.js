@@ -1,3 +1,18 @@
+var express = require('express');
+var app = express();
+
+app.get('/', function(req, res){
+  res.send('Hello World');
+});
+
+var server = app.listen(12892, function() {
+    console.log('Listening on port %d', server.address().port);
+});
+
+
+/*
+//This works.
+
 var http = require("http");
 
 http.createServer(function(request, response) {
@@ -6,5 +21,6 @@ http.createServer(function(request, response) {
   response.write("Hello World!! Exclamation!" + t);
   response.end();
 }).listen(12892);
+*/
 
 
