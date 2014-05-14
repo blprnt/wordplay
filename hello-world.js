@@ -5,8 +5,8 @@ app.get('/', function(req, res){
   res.send('Hello World');
 });
 
-app.get('/word/:word', function(req, res){
-  res.send('Word:' + req.params.word);
+app.get('/word/:corpus/:input', function(req, res){
+  res.send('Process ' + req.params.input + ' from ' + req.params.corpus);
 });
 
 var server = app.listen(12892, function() {
