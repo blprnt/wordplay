@@ -5,7 +5,7 @@ app.get('/', function(req, res){
   res.send('Hello World');
 });
 
-app.get('/word/:corpus/:input', function(req, res){
+app.get('/:corpus/:input', function(req, res){
   //res.send('Process ' + req.params.input + ' from ' + req.params.corpus);
   res.send('Output:' + require('wordplay.js').getWordMatches(req.params.input));
 });
