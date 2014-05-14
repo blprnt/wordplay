@@ -5,8 +5,6 @@ app.get('/', function(req, res){
   res.send('Hello World');
 });
 
-app.param('word', /^\d+$/);
-
 app.get('/word/:word', function(req, res){
   res.send('Word:' + req.params.word);
 });
