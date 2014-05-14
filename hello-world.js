@@ -5,6 +5,12 @@ app.get('/', function(req, res){
   res.send('Hello World');
 });
 
+app.param('word', /^\d+$/);
+
+app.get('/word/:word', function(req, res){
+  res.send('Word:' + req.params.word);
+});
+
 var server = app.listen(12892, function() {
     console.log('Listening on port %d', server.address().port);
 });
