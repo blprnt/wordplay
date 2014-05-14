@@ -7,7 +7,7 @@ app.get('/', function(req, res){
 
 app.get('/:corpus/:input', function(req, res){
   //res.send('Process ' + req.params.input + ' from ' + req.params.corpus);
-  res.send('Output:' + require('wordplay.js').getWordMatches(req.params.input));
+  res.send('Output:' + require('wordplay.js').getWordMatches(req.params.input, req.params.corpus));
 });
 
 var server = app.listen(12892, function() {
