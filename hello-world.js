@@ -11,7 +11,8 @@ https://github.com/blprnt/wordplay
 var express = require('express')
 require('express')
   , stylus = require('stylus')
-  , nib = require('nib');
+  , nib = require('nib')
+  , marked = require('marked')
 
 var app = express();
 
@@ -40,12 +41,12 @@ app.get('/', function (req, res) {
 })
 
 //API CALLS
-app.get('wp/:corpus/:input/:max', function(req, res){
+app.get('/wp/:corpus/:input/:max', function(req, res){
   //res.send('Process ' + req.params.input + ' from ' + req.params.corpus);
   res.send(JSON.stringify(require('wordplay.js').getWordMatches(req.params.input, req.params.corpus, req.params.max)), null, 4);
 });
 
-app.get('wp/:corpus/:input', function(req, res){
+app.get('/wp/:corpus/:input', function(req, res){
   //res.send('Process ' + req.params.input + ' from ' + req.params.corpus);
   res.send(JSON.stringify(require('wordplay.js').getWordMatches(req.params.input, req.params.corpus, 20)), null, 4);
 });

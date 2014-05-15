@@ -1,22 +1,53 @@
 extend layout
+
 block content
   p
-    | Vivamus hendrerit arcu sed erat molestie
-    | vehicula. Sed auctor neque eu tellus
-    | rhoncus ut eleifend nibh porttitor. Ut in.
+    | WordPlay is a free-text linguistic exploration tool.
+    | 
   p
-    | Donec congue lacinia dui, a porttitor
-    | lectus condimentum laoreet. Nunc eu
-    | ullamcorper orci. Quisque eget odio ac
-    | lectus vestibulum faucibus eget in metus.
-    | In pellentesque faucibus vestibulum. Nulla
-    | at nulla justo, eget luctus tortor.
-block sidebar
-  .widget
-    h1 Widget
-    p
-      | Sed auctor neque eu tellus rhoncus ut
-      | eleifend nibh porttitor. Ut in nulla enim.
-    p
-      | Vivamus hendrerit arcu sed erat molestie
-      | vehicula.
+    | Built by 
+    a(href="http://o-c-r.org") The Office for Creative Research 
+
+
+  script(type='text/javascript', src="http://code.jquery.com/jquery-1.9.1.min.js")
+  script.
+    function submitForm(txt) {
+      var corp = document.getElementById("corpusID").value;
+      var txt = document.getElementById("searchText").value;
+      var json = $.getJSON("http://127.0.0.1:12892/wp/" + corp + "/" + txt, function(data) {
+        console.log("JSON RECEIVED")
+        processResults(data);
+      });
+      
+    }
+
+    function processResults(json) {
+
+      var items = [];
+
+      $(".result-list").remove();
+
+      for(var i = 0; i < json.results.length; i++) {
+        var txt = json.results[i].segment;
+        items.push( "<li id='" + txt + "'>" + txt + "</li>" );
+        //console.log(txt);
+      }
+
+      $( "<ul/>", {
+        "class": "result-list",
+        html: items.join( "" )
+      }).appendTo( ".results" );
+    }
+
+  form(name="login", action="JavaScript:submitForm()", method="post")
+      select(name="corpus" id="corpusID")
+        option(value="shakes") Shakespeare
+        option(value="bible") Bible
+        option(value="freud") Freud
+        option(value="mobydick") Moby Dick
+        option(value="bieber") Bieber
+      input(type="text", name="user", id="searchText" value="a terrible fate")
+      input(type="submit", value="search")
+
+  .results
+  
