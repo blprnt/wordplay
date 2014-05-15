@@ -9,7 +9,7 @@ jer@o-c-r.org
 
 1. Install Node.js: http://nodejs.org/
 
-2. Run 'npm install' from the wordplay directory to isntall all of the required dependencies.
+2. Run 'npm install' from the wordplay directory to install all of the required dependencies. (This should work. If it doesn't, you can manually install the follwoing using npm install <module>: express, rita, jade, stylus, nib, forever, marked )
 
 3. Run 'node wordplay-app.js'
 
