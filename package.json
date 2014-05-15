@@ -4,6 +4,11 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "express": "3.x"
+    "express": ">=3.x",
+    "forever": ">=0.1.x",
+    "marked": ">=0.3.x",
+    "nib": ">=1.0.x",
+    "rita": ">=1.0.61",
+    "stylus": ">=0.45.x"
   }
 }
