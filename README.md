@@ -11,7 +11,7 @@ jer@o-c-r.org
 
 2. Run 'npm install' from the wordplay directory to isntall all of the required dependencies.
 
-3. Run 'node hello_world.js'
+3. Run 'node wordplay-app.js'
 
 4. Visit http://121.0.0.7 in your browser
 
