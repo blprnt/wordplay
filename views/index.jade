@@ -14,7 +14,7 @@ block content
     function submitForm(txt) {
       var corp = document.getElementById("corpusID").value;
       var txt = document.getElementById("searchText").value;
-      var json = $.getJSON("http://wordplay.ocr.org/wp/" + corp + "/" + txt, function(data) {
+      var json = $.getJSON("http://wordplay.o-c-r.org/wp/" + corp + "/" + txt, function(data) {
         console.log("JSON RECEIVED")
         processResults(data);
       });
