@@ -1,0 +1,2 @@
+export PATH=$PATH:/home/blprnt/webapps/wordplay/wordplay/node_modules/forever/bin/
+export PATH=$PATH:$PWD/bin/
