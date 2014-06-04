@@ -17,7 +17,8 @@ block content
       var possibleStarts = [
         "a terrible fate",
         "four strong winds",
-        "before the storm"
+        "before the storm",
+        "highway to the dangerzone"
       ]
 
       var startInput = possibleStarts[Math.floor(Math.random() * possibleStarts.length)];
@@ -65,7 +66,6 @@ block content
         for(var i = 0; i < json.results.length; i++) {
           var txt = json.results[i].segment;
           var sent = json.results[i].sentence;
-          sent = sent.replace("\"", "\\\"");
           console.log("sentence:" + sent);
           $( "<div/>", {
            "class": "result-item",
