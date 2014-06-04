@@ -104,12 +104,59 @@ a img {
  * background color as variables
  */
 a {
-  color: #f90;
+  color: #aaa;
 }
 body {
-  font-family: 'Georgia';
+  font-family: 'Montserrat';
   background-color: #222;
   color: #ccc;
+}
+.searchresults {
+  position: absolute;
+  width: 60%;
+  height: 40%;
+  left: 20%;
+  top: 30%;
+}
+.searchresults .result-item {
+  padding-bottom: 4px;
+}
+.searchresults a {
+  text-decoration: none;
+}
+.results {
+  text-align: center;
+}
+input,
+input:focus {
+  background-color: rgba(0,0,0,0);
+  width: 100%;
+  border: none;
+  color: #f60;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 48px;
+  font: 26px Montserrat;
+  margin: 0;
+  outline: 0 none;
+  padding: 7px;
+}
+select {
+  position: fixed;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  left: 10px;
+  top: 20px;
+  background-color: rgba(0,0,0,0);
+  border: none;
+  color: #f90;
+  font-family: Georgia, Times;
+  font-size: 48px;
+  font: 18px 'Lucida Grande', Helvetica, Arial;
+  margin: 0;
+  outline: 0 none;
+  padding: 7px;
 }
 header {
   font-family: 'Montserrat';
@@ -169,9 +216,13 @@ p {
   line-height: 1.8;
 }
 footer {
+  color: #ccc;
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
   width: 500px;
-  margin: 50px auto;
-  border-top: 1px dotted #ccc;
+  margin: 10px auto;
   padding-top: 5px;
+  padding-left: 5px;
   font-size: 13px;
 }

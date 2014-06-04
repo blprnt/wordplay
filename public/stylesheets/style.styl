@@ -21,12 +21,56 @@ main-color = #333333
 background-color = #222222
 
 a
-  color #FF9900
+  color #AAAAAA
 
 body
-  font-family 'Georgia'
+  font-family 'Montserrat'
   background-color background-color
   color #CCCCCC
+
+.searchresults
+  position absolute;
+  width 60%
+  height 40%
+  left 20%
+  top 30%
+
+  .result-item
+    padding-bottom 4px
+
+  a
+    text-decoration none
+
+.results
+  text-align center
+
+input, input:focus
+  background-color rgba(0,0,0,0)
+  width 100%
+  border none
+  color #FF6600
+  text-align center
+  font-family Montserrat
+  font-size 48px
+  font 26px Montserrat
+  margin 0
+  outline 0 none
+  padding 7px
+
+select
+  position fixed
+  appearance none
+  left 10px
+  top 20px
+  background-color rgba(0,0,0,0)
+  border none
+  color #FF9900
+  font-family Georgia,Times
+  font-size 48px
+  font 18px 'Lucida Grande',Helvetica,Arial
+  margin 0
+  outline 0 none
+  padding 7px
 
 header
   font-family 'Montserrat'
@@ -88,8 +132,12 @@ p
   line-height 1.8
 
 footer
+  color #CCCCCC
+  position fixed
+  left 0px
+  bottom 0px
   width 500px
-  margin 50px auto
-  border-top 1px dotted #ccc
+  margin 10px auto
   padding-top 5px
+  padding-left 5px
   font-size 13px

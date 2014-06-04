@@ -1,53 +1,98 @@
 extend layout
 
 block content
-  p
-    | WordPlay is a free-text linguistic exploration tool.
-    | 
-  p
-    | Built by 
-    a(href="http://o-c-r.org") The Office for Creative Research 
 
+  .searchresults
 
-  script(type='text/javascript', src="http://code.jquery.com/jquery-1.9.1.min.js")
-  script.
-    function submitForm(txt) {
-      var corp = document.getElementById("corpusID").value;
-      var txt = document.getElementById("searchText").value;
-      var json = $.getJSON("http://wordplay.o-c-r.org/wp/" + corp + "/" + txt, function(data) {
-        console.log("JSON RECEIVED")
-        processResults(data);
-      });
-      
-    }
+    script(type='text/javascript', src="http://code.jquery.com/jquery-1.9.1.min.js")
+    script.
 
-    function processResults(json) {
+      var endPoint = "http://wordplay.o-c-r.org/wp/";
 
-      var items = [];
+      var resultCount = 0;
+      var originalHeight = $(window).height();
+      console.log("ORIGINAL HEIGHT:" + originalHeight);
+      positionInput();
 
-      $(".result-list").remove();
+      var possibleStarts = [
+        "a terrible fate",
+        "four strong winds",
+        "before the storm"
+      ]
 
-      for(var i = 0; i < json.results.length; i++) {
-        var txt = json.results[i].segment;
-        items.push( "<li id='" + txt + "'>" + txt + "</li>" );
-        //console.log(txt);
+      var startInput = possibleStarts[Math.floor(Math.random() * possibleStarts.length)];
+      var startCount = 0;
+
+      var timer = setInterval(doTyping, 100);
+
+      function doTyping() {
+        startCount ++;
+        $('#searchText').val(startInput.substr(0,startCount));
+        if (startCount == startInput.length) {
+          $("#wordForm").submit();
+          clearInterval(timer);
+        }
       }
 
-      $( "<ul/>", {
-        "class": "result-list",
-        html: items.join( "" )
-      }).appendTo( ".results" );
-    }
+      function submitForm(txt) {
+        var corp = document.getElementById("corpusID").value;
+        var txt = document.getElementById("searchText").value;
+        var json = $.getJSON(endPoint + corp + "/" + txt, function(data) {
+          console.log("JSON RECEIVED")
+          processResults(data);
+        }); 
+      }
 
-  form(name="login", action="JavaScript:submitForm()", method="post")
-      select(name="corpus" id="corpusID")
-        option(value="shakes") Shakespeare
-        option(value="bible") Bible
-        option(value="freud") Freud
-        option(value="mobydick") Moby Dick
-        option(value="bieber") Bieber
-      input(type="text", name="user", id="searchText" value="a terrible fate")
-      input(type="submit", value="search")
+      function positionInput() {
+        var pos = (originalHeight/2 - (resultCount * 10));
+        $('.searchresults').animate({'top': pos}, 300, "swing", function() {
 
-  .results
+        });
+        console.log(resultCount + ":" + pos);
+      }
+
+      function clearResults() {
+        $(".results").empty();
+        resultCount = 0;
+      }
+
+      function processResults(json) {
+
+        clearResults();
+
+        $(".result-list").remove();
+
+        for(var i = 0; i < json.results.length; i++) {
+          var txt = json.results[i].segment;
+          var sent = json.results[i].sentence;
+          //sent = sent.replace(/\"/g, "")
+          console.log("sentence:" + sent);
+          $( "<div/>", {
+           "class": "result-item",
+           "id": "result" + i,
+           html: "<a href='#' title='" + sent + "''>" + txt + "</a>"
+          }).appendTo( ".results" );
+
+          $("#result" + i).css('opacity', 0);
+          $("#result" + i).animate({opacity:1}, 100 + (i * 50), function() {
+            console.log("ANIMATION FINISHED.");
+          });
+
+          resultCount ++;
+        }
+
+        positionInput();
+
+      }
+
+    form(name="login", action="JavaScript:submitForm()", method="post" id="wordForm")
+        select(name="corpus" id="corpusID" onchange='this.form.submit()')
+          option(value="shakes") Shakespeare
+          option(value="bible") Bible
+          option(value="freud") Freud
+          option(value="mobydick") Moby Dick
+          option(value="bieber") Bieber
+        input(type="text", name="user", id="searchText" value="" autofocus)
+
+    .results
   
