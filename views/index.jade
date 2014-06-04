@@ -65,7 +65,7 @@ block content
         for(var i = 0; i < json.results.length; i++) {
           var txt = json.results[i].segment;
           var sent = json.results[i].sentence;
-          //sent = sent.replace(/\"/g, "")
+          sent = sent.replace("\"", "\\\"");
           console.log("sentence:" + sent);
           $( "<div/>", {
            "class": "result-item",
