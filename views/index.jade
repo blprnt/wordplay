@@ -19,7 +19,12 @@ block content
         "a terrible fate",
         "four strong winds",
         "before the storm",
-        "highway to the danger zone"
+        "highway to the danger zone",
+        "killing me softly",
+        "a question about scales",
+        "forsooth!",
+        "the fog of war",
+        "your mighty castle"
       ]
 
       var startInput = possibleStarts[Math.floor(Math.random() * possibleStarts.length)];
@@ -37,12 +42,15 @@ block content
       }
 
       function submitForm(txt) {
+        if (txt) $('#searchText').val(txt);  
         var corp = document.getElementById("corpusID").value;
         var txt = document.getElementById("searchText").value;
+        console.log("QUERY:" + txt);
         var json = $.getJSON(endPoint + corp + "/" + txt, function(data) {
           console.log("JSON RECEIVED")
           processResults(data);
         }); 
+
       }
 
       function positionInput() {
@@ -75,6 +83,10 @@ block content
           }).appendTo( ".results" );
 
           $("#result" + i).css('opacity', 0);
+          $("#result" + i).click(function() {
+            console.log($(this).text());
+            submitForm($(this).text());
+          });
           $("#result" + i).animate({opacity:1}, 100 + (i * 50), function() {
             console.log("ANIMATION FINISHED.");
           });
