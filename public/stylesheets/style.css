@@ -144,9 +144,6 @@ input:focus {
 }
 select {
   position: fixed;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
   left: 10px;
   top: 20px;
   background-color: rgba(0,0,0,0);
