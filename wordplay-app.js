@@ -41,6 +41,12 @@ app.get('/', function (req, res) {
   )
 })
 
+app.get('/:corpus/:input', function (req, res) {
+  res.render('index',
+  { title : 'Simple, free-text linguistic search', defCorpus: req.params.corpus, defInput: req.params.input }
+  )
+})
+
 //API CALLS
 app.get('/wp/:corpus/:input/:max', function(req, res){
   //res.send('Process ' + req.params.input + ' from ' + req.params.corpus);

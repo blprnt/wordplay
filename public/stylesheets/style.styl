@@ -29,8 +29,21 @@ body
   background-color background-color
   color #CCCCCC
 
+.tweetButton
+  position fixed
+  top: 50%;
+  left: 50%;
+  margin-top: -25px;
+  margin-left: -15px;
+  width 30px
+  height 30px
+  background-image: url('images/twitterLogoFadeSmall.png')
+
+  &:hover { background-image: url('images/twitterLogoSmall.png') }
+  
+
 .searchresults
-  position absolute;
+  position absolute
   width 60%
   height 40%
   left 20%
@@ -41,6 +54,13 @@ body
 
   a
     text-decoration none
+
+  &:hover { color:#FF9900 }
+
+.sentence
+  text-size:10px
+  color: #888888
+  margin-top:5px
 
 .results
   text-align center

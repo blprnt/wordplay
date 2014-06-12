@@ -112,6 +112,19 @@ body {
   background-color: #222;
   color: #ccc;
 }
+.tweetButton {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -25px;
+  margin-left: -15px;
+  width: 30px;
+  height: 30px;
+  background-image: url("images/twitterLogoFadeSmall.png");
+}
+.tweetButton:hover {
+  background-image: url("images/twitterLogoSmall.png");
+}
 .searchresults {
   position: absolute;
   width: 60%;
@@ -124,6 +137,14 @@ body {
 }
 .searchresults a {
   text-decoration: none;
+}
+.searchresults:hover {
+  color: #f90;
+}
+.sentence {
+  text-size: 10px;
+  color: #888;
+  margin-top: 5px;
 }
 .results {
   text-align: center;
